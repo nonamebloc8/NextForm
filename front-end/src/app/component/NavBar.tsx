@@ -71,12 +71,12 @@ export default function Navbar() {
             </Link>
 
             {/* Profil */}
-            <Link
+            {/* <Link
               href="/profil"
               className="group rounded-full p-2 hover:bg-gray-100 transition-colors"
             >
               <User className="h-5 w-5 text-gray-700 group-hover:text-violet-500 transition-colors" />
-            </Link>
+            </Link> */}
 
             {/* Bouton menu mobile */}
             <button

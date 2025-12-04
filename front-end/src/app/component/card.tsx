@@ -30,7 +30,7 @@ const ProductCards: React.FC<Product> = ({ title, description, price, image }) =
       <p className="font-bold mb-4">{price}</p>
 
       <div className="w-full flex items-center justify-center">
-        <Link href="/dashboard/produits" className="w-full">
+        <Link href="/produits" className="w-full">
           <button className="bg-purple-500 w-full text-white px-3 py-1 rounded-lg text-lg font-bold hover:bg-purple-700">
             Voir les produits
           </button>

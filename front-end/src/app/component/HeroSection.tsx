@@ -26,7 +26,7 @@ export default function HeroSectionAnimated() {
             avec un accompagnement expert.
           </p>
           <button className="rounded-md mt-4 bg-violet-600 px-6 py-2 text-sm md:text-base font-medium text-white shadow hover:bg-violet-700 transition-colors">
-            <Link href="/dashboard/produits">Parcourir les produits</Link>
+            <Link href="/produits">Parcourir les produits</Link>
           </button>
         </motion.div>
 
