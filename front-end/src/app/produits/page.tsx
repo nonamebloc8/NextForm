@@ -1,9 +1,9 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { FiltersBar } from '../../component/FiltersBar';
-import ProductCard from '../../component/ProductCard';
 import { motion } from 'framer-motion';
 import { Product } from '@/types/product';
+import { FiltersBar } from '../component/FiltersBar';
+import ProductCard from '../component/ProductCard';
 
 // Type Product
 // export type Product = {

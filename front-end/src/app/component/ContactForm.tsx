@@ -9,7 +9,9 @@ export default function ContactForm() {
     message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -18,8 +20,17 @@ export default function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Données envoyées :", formData);
-    alert("Message envoyé !");
+
+    // 👉 Ici tu pourras plus tard appeler ton API
+    // await fetch("/api/contact", { method: "POST", body: ... })
+
+    // 👉 Reset des champs
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
   };
 
   return (
@@ -28,6 +39,7 @@ export default function ContactForm() {
       <p className="text-gray-500 mb-6 text-sm">
         Nous sommes là pour vous aider avec toutes vos questions.
       </p>
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium">Nom Complet</label>

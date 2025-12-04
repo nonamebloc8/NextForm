@@ -1,6 +1,7 @@
 import WhatsAppButton from "@/app/component/WhatsAppButton";
-import ContactForm from "../../component/ContactForm";
-import ContactInfo from "../../component/ContactInfo";
+import ContactForm from "../component/ContactForm";
+import ContactInfo from "../component/ContactInfo";
+
 
 
 export default function ContactPage() {

@@ -12,10 +12,10 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { name: 'Accueil', href: '/dashboard' },
-  { name: 'Produits', href: '/dashboard/produits' },
-  { name: 'Commandes', href: '/dashboard/commandes' },
-  { name: 'Contact', href: '/dashboard/contact' },
+  { name: 'Accueil', href: '/' },
+  { name: 'Produits', href: '/produits' },
+  { name: 'Commandes', href: '/commandes' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
@@ -32,7 +32,7 @@ export default function Navbar() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/dashboard">
+            <Link href="/">
               <img src="/Selection.jpeg" className="w-15 h-10 rounded-full" alt="logo" />
             </Link>
           </div>
@@ -59,7 +59,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             {/* Panier */}
             <Link
-              href="/dashboard/commandes"
+              href="/commandes"
               className="group rounded-full p-2 hover:bg-gray-100 transition-colors relative"
             >
               <ShoppingCart className="h-5 w-5 text-gray-700 group-hover:text-violet-500 transition-colors" />
