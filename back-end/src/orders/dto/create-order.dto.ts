@@ -23,10 +23,8 @@ export class OrderItemDto {
 export class CreateOrderDto {
   @IsString({ message: 'Le nom du client doit être une chaîne de caractères' })
   @IsNotEmpty({ message: 'Le nom du client est obligatoire' })
-  customerName: string;
+  customerName?: string;
   
-  userId?: number;
-
   @IsEmail({}, { message: 'Email invalide' })
   customerEmail: string;
 

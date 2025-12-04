@@ -31,11 +31,6 @@ export class OrdersService {
 
     return this.dataSource.transaction(async (manager) => {
 
-
-      if (!createDto.userId) {
-  throw new BadRequestException('userId is required to create an order');
-}
-
       // Création de la commande avec le type correct
       const order = manager.getRepository(Orders).create({
         customerName: createDto.customerName,
@@ -47,7 +42,6 @@ export class OrdersService {
         subTotal,
         shippingPrice,
         total,
-        userId: createDto.userId,
         status: 'PENDING',
         createdAt: new Date(),
         updatedAt: new Date(),

@@ -12,24 +12,18 @@ import {
 } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
-import { jwtAuthGuard } from 'src/users/jwt-auth-guard';
+// import { jwtAuthGuard } from 'src/users/jwt-auth-guard';
 
 @Controller('orders')
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
   @Post()
-  @UseGuards(jwtAuthGuard)
-  async create(
-    @Body() createOrderDto: CreateOrderDto,
-    @Req() req
-  ) {
-    // Ajoute le userId à ton DTO
-    createOrderDto.userId = req.user.id;
+@Post()
+create(@Body() dto: CreateOrderDto) {
+  return this.ordersService.create(dto);
+}
 
-    const order = await this.ordersService.create(createOrderDto);
-    return { message: 'Order created', order };
-  }
 
 
 
