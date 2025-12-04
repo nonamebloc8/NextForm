@@ -1,0 +1,46 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Next.js
+.next/
+out/
+.vercel/
+
+# Logs
+logs/
+*.log
+*.log.*
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Build
+dist/
+build/
+coverage/
+
+# Typescript
+*.tsbuildinfo
+
+# Misc
+*.swp
