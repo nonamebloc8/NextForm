@@ -10,8 +10,9 @@ export class OrderItem {
   @Column()
   productId: number;
 
-  @Column()
-  productName: string;
+@Column({ nullable: true })
+productName: string;
+
 
   @Column('decimal', { precision: 10, scale: 2 })
   unitPrice: number;
