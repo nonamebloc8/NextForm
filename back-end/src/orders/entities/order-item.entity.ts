@@ -11,7 +11,8 @@ export class OrderItem {
   productId: number;
 
 @Column({ nullable: true })
-productName: string;
+customerName: string;
+
 
 
   @Column('decimal', { precision: 10, scale: 2 })

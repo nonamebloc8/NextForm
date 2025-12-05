@@ -9,8 +9,9 @@ export class Orders {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  customerName: string;
+@Column({ nullable: true })
+customerName: string;
+
 
   @Column({ nullable: false, default: '' })
 productName: string;
