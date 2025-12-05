@@ -50,19 +50,20 @@ export class OrdersService {
 
       const savedOrder = await manager.getRepository(Orders).save(order);
 
-      // Création des items
-      const itemsToSave = items.map((item) =>
-        manager.getRepository(OrderItem).create({
-          order: savedOrder,
-          productId: item.productId,
-          productName: item.productName,
-          quantity: item.quantity,
-          unitPrice: item.unitPrice,
-          lineTotal: Number(item.unitPrice) * Number(item.quantity),
-        }),
-      );
+const itemsToSave = items.map((item) =>
+  manager.getRepository(OrderItem).create({
+    productId: item.productId,
+    productName: item.productName,
+    quantity: item.quantity,
+    unitPrice: item.unitPrice,
+    lineTotal: Number(item.unitPrice) * Number(item.quantity),
+    order: savedOrder, // OK uniquement si l’entité contient bien "order"
+  }),
+);
 
-      await manager.getRepository(OrderItem).save(itemsToSave);
+
+
+await manager.getRepository(OrderItem).save(itemsToSave);
 
       // Récupérer la commande complète avec les items
       const fullOrder = await manager.getRepository(Orders).findOneOrFail({
