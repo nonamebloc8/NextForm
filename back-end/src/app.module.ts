@@ -8,9 +8,6 @@ import { join } from 'path';
 import { ConfigModule } from '@nestjs/config';
 import { OrdersModule } from './orders/orders.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Orders } from './orders/entities/order.entity';
-import { OrderItem } from './orders/entities/order-item.entity';
-import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [

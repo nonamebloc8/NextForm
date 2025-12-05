@@ -12,6 +12,10 @@ export class Orders {
   @Column()
   customerName: string;
 
+  @Column({ nullable: false, default: '' })
+productName: string;
+
+
   @Column()
   customerEmail: string;
 
