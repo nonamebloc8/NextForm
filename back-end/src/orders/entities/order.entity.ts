@@ -13,13 +13,14 @@ export class Orders {
 customerName: string;
 
 
-  @Column()
-  customerEmail: string;
+@Column({ nullable: true })
+customerEmail: string;
 
-  @Column()
+
+@Column({ nullable: true })
   customerPhone: string;
 
-  @Column()
+@Column({ nullable: true })
   shippingAddress: string;
 
   @Column({ nullable: true })
