@@ -23,7 +23,7 @@ const Page = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('http://localhost:4000/products');
+        const res = await fetch('https://pharmacie-soleil.onrender.com/products');
         if (!res.ok) throw new Error('Erreur lors de la récupération des produits');
         const data: Product[] = await res.json();
 
