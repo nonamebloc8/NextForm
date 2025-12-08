@@ -90,12 +90,7 @@ export default function CheckoutPage() {
       // 🔥 Correction principale ici
       const accessToken = tokenManager.getAccessToken();
 
-      if (!accessToken) {
-        toast.error("Vous devez être connecté pour passer une commande.");
-        return;
-      }
-
-      const response = await fetch("http://localhost:4000/orders", {
+      const response = await fetch("https://pharmacie-soleil.onrender.com/orders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
