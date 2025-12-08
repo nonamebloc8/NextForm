@@ -13,7 +13,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   if (!product) return null;
 
-  const imageUrl = `http://localhost:4000${product.imageUrl}`;
+  const imageUrl = `https://pharmacie-soleil.onrender.com${product.imageUrl}`;
 
   // Chercher la quantité du produit dans le panier
   const cartItem = cart.find((item) => item.product.id === product.id);
