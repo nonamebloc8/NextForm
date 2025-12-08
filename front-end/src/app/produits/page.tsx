@@ -5,19 +5,10 @@ import { Product } from '@/types/product';
 import { FiltersBar } from '../component/FiltersBar';
 import ProductCard from '../component/ProductCard';
 
-// Type Product
-// export type Product = {
-//   id: number;
-//   name: string;
-//   description: string;
-//   price: number;
-//   imageUrl: string;
-
-// };
 
 const Page = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  
+
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
   // Récupération des produits depuis le backend
