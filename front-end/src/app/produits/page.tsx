@@ -17,6 +17,7 @@ import ProductCard from '../component/ProductCard';
 
 const Page = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
   // Récupération des produits depuis le backend
