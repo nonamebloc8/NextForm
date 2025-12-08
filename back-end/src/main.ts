@@ -15,10 +15,10 @@ async function bootstrap() {
   );
 
   const allowedOrigins = [
-    process.env.FRONTEND_URL,                // depuis .env
-    'https://pharmaciesoleil.vercel.app',    // fallback direct
-    'http://localhost:3000',                 // dev
-  ].filter(Boolean); // supprime null/undefined
+    process.env.FRONTEND_URL,                
+    'https://pharmaciesoleil.vercel.app',    
+    'http://localhost:3000',                 
+  ].filter(Boolean);   // <-- Le "-" supprimé ici
 
   app.enableCors({
     origin: allowedOrigins,
@@ -26,8 +26,11 @@ async function bootstrap() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   });
 
+  // Le port DOIT être donné par Render (process.env.PORT)
   const port = process.env.PORT || 3000;
+
   await app.listen(port, '0.0.0.0');
+  console.log(`🚀 Server running on port ${port}`);
 }
 
 bootstrap();
