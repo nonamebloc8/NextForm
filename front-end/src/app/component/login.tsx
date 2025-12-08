@@ -28,7 +28,7 @@ export default function LoginPage() {
     setErrorMsg("");
 
     try {
-      const res = await fetch("http://localhost:4000/auth/login", {
+      const res = await fetch("https://pharmacie-soleil.onrender.com/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -47,7 +47,7 @@ export default function LoginPage() {
       });
 
       useAuthStore.getState().setAuthenticated(true);
-      router.push("/dashboard");
+      router.push("/");
     } catch (err: unknown) {
       console.error("Login error:", err);
 

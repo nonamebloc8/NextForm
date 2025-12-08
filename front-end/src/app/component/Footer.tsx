@@ -41,10 +41,10 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-3 text-gray-800">Liens Rapides</h4>
           <ul className="space-y-2">
-            <li><Link href="/dashboard" className="hover:text-purple-600">Accueil</Link></li>
-            <li><Link href="dashboard/produits" className="hover:text-purple-600">Produits</Link></li>
-            <li><Link href="/dashboard/commandes" className="hover:text-purple-600">Commandes</Link></li>
-            <li><Link href="/dashboard/contact" className="hover:text-purple-600">Contact</Link></li>
+            <li><Link href="/" className="hover:text-purple-600">Accueil</Link></li>
+            <li><Link href="/produits" className="hover:text-purple-600">Produits</Link></li>
+            <li><Link href="/commandes" className="hover:text-purple-600">Commandes</Link></li>
+            <li><Link href="/contact" className="hover:text-purple-600">Contact</Link></li>
           </ul>
         </div>
 

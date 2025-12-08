@@ -129,7 +129,7 @@ export default function CheckoutPage() {
         </p>
 
         <a
-          href="/dashboard"
+          href="/"
           className="mt-6 bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-purple-700"
         >
           Retour à l&apos;accueil
