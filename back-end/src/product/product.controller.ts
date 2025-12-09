@@ -10,6 +10,7 @@ import {
   Put,
   UseInterceptors,
   UploadedFile,
+  Query,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto, UpdateProductDto } from './dto/Product.dto';
@@ -29,9 +30,14 @@ createBulk(@Body() products: CreateProductDto[]) {
 
 
   @Get()
-  getAllProduct() {
-    return this.productService.getAllProduct();
+  getProducts(
+    @Query('page') page?: number,
+    @Query('limit') limit?: number,
+    @Query('cursor') cursor?: number,
+  ) {
+    return this.productService.getProducts({ page, limit, cursor });
   }
+
 
   @Get(':id')
   findOne(@Param('id') id: string) {
