@@ -281,7 +281,7 @@ export default function CheckoutPage() {
                   Informations RIB
                 </h3>
 
-                <p><strong>Bénéficiaire :</strong> Rick Juvanol</p>
+                <p><strong>Bénéficiaire :</strong> Willey JEAN LOUIS</p>
                 <p><strong>IBAN :</strong> {IBAN}</p>
                 <p><strong>BIC :</strong> {BIC}</p>
 

@@ -8,13 +8,11 @@ import ProductSkeleton from '../component/ProductSkeleton';
 import { useProductsInfinite } from '@/hook/useProducts';
 
 const Page = () => {
-const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useProductsInfinite();
+const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
+  useProductsInfinite();
 
+const products = data ? data.pages.flatMap((p) => p.items) : [];
 
-  // aggregate pages -> array of products
-const products: Product[] = data
-  ? data.pages.flatMap(page => page.items)
-  : [];
 
 
   // IntersectionObserver pour déclencher fetchNextPage
