@@ -47,8 +47,8 @@ export default function CheckoutPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const IBAN = "FR76 2763 3121 2904 0491 1163 368";
-  const BIC = "BUNQFRP2";
+  const IBAN = "FR76 1759 8000 0100 0185 4999 019";
+  const BIC = "LYDIFRP2XX";
 
   const copyIban = () => {
     navigator.clipboard.writeText(IBAN);
@@ -281,7 +281,7 @@ export default function CheckoutPage() {
                   Informations RIB
                 </h3>
 
-                <p><strong>Bénéficiaire :</strong> Willey JEAN LOUIS</p>
+                <p><strong>Bénéficiaire :</strong> Mr khelfa marwan </p>
                 <p><strong>IBAN :</strong> {IBAN}</p>
                 <p><strong>BIC :</strong> {BIC}</p>
 
