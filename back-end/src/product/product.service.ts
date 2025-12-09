@@ -7,53 +7,27 @@ export class ProductService {
   constructor(private readonly prisma: PrismaService) {}
 
   /** 📌 Récupérer tous les produits */
-  async getProducts(params: { page?: number; limit?: number; cursor?: number }) {
-    const { page, limit = 10, cursor } = params;
+    async getProducts({ page, limit, cursor }) {
+      const take = limit ?? 12;
 
-    // --- CURSOR PAGINATION (INFINITE SCROLL) ---
-    if (cursor) {
-      const products = await this.prisma.product.findMany({
-        take: limit,
-        skip: 1,
-        cursor: { id: cursor },
+      if (cursor && !isNaN(Number(cursor))) {
+        return this.prisma.product.findMany({
+          take,
+          skip: 1,
+          cursor: {
+            id: Number(cursor),
+          },
+          orderBy: { id: 'asc' },
+        });
+      }
+
+      // fallback si pas de cursor → pagination normale
+      return this.prisma.product.findMany({
+        take,
         orderBy: { id: 'asc' },
       });
-
-      return {
-        data: products,
-        nextCursor: products.length ? products[products.length - 1].id : null,
-      };
     }
 
-    // --- PAGE PAGINATION ---
-    const currentPage = page ? Number(page) : 1;
-    const offset = (currentPage - 1) * limit;
-
-    const [data, total] = await Promise.all([
-      this.prisma.product.findMany({
-        skip: offset,
-        take: limit,
-        orderBy: { id: 'asc' },
-        select: {
-          id: true,
-          name: true,
-          price: true,
-          imageUrl: true,
-          description: true,
-          stock: true,
-          createdAt: true,
-        },
-      }),
-      this.prisma.product.count(),
-    ]);
-
-    return {
-      data,
-      page: currentPage,
-      total,
-      totalPages: Math.ceil(total / limit),
-    };
-  }
 
 
   /** 📌 Récupérer un produit par ID */
