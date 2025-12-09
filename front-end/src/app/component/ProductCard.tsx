@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
 import React from "react";
 import { useCart } from "../context/CartContext";
 import { Product } from "@/types/product";
+import { useQueryClient } from '@tanstack/react-query';
 
 interface ProductCardProps {
   product: Product;
@@ -10,12 +11,12 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { cart, addToCart, removeFromCart } = useCart();
+  const queryClient = useQueryClient();
 
   if (!product) return null;
 
-  const imageUrl = `https://pharmacie-soleil.onrender.com${product.imageUrl}`;
+  const imageUrl = `https://pharmacie-soleil.onrender.com${product.imageUrl ?? ''}`;
 
-  // Chercher la quantité du produit dans le panier
   const cartItem = cart.find((item) => item.product.id === product.id);
   const quantity = cartItem ? cartItem.quantity : 0;
 
@@ -28,11 +29,30 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     }
   };
 
+  // ✅ Préfetch TS-safe avec React Query
+    const prefetchProduct = () => {
+      queryClient.prefetchQuery<Product, Error>({
+        queryKey: ['product', product.id],
+        queryFn: async (): Promise<Product> => {
+          const res = await fetch(`https://pharmacie-soleil.onrender.com/products/${product.id}`);
+          if (!res.ok) throw new Error('Failed to fetch product');
+          const data: Product = await res.json();
+          return data;
+        },
+        staleTime: 1000 * 60 * 5, 
+      });
+    };
+
+
   return (
-    <div className="border rounded-lg p-4 shadow hover:shadow-lg transition">
+    <div
+      className="border rounded-lg p-4 shadow hover:shadow-lg transition"
+      onMouseEnter={prefetchProduct} // Préfetch au hover
+    >
       <img
         src={imageUrl}
         alt={product.name}
+        loading="lazy" // Lazy loading image
         className="w-full h-48 object-cover rounded-md mb-3"
       />
 
