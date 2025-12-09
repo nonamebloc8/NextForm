@@ -9,7 +9,7 @@ export interface PaginatedProducts {
 const API_BASE = 'https://pharmacie-soleil.onrender.com';
 
 async function fetchProductsPage(page: number): Promise<PaginatedProducts> {
-  const limit = 5;
+  const limit = 22; // <--- AFFICHER 4 PAR 4
 
   const res = await fetch(`${API_BASE}/products?page=${page}&limit=${limit}`);
   if (!res.ok) throw new Error('Erreur fetch produits');
@@ -24,9 +24,8 @@ async function fetchProductsPage(page: number): Promise<PaginatedProducts> {
 
 export function useProductsInfinite() {
   return useInfiniteQuery(
-    ['products-infinite'],                      // KEY
-    ({ pageParam = 1 }: any) =>                // <-- on supprime le problème ici
-      fetchProductsPage(pageParam),
+    ['products-infinite'],
+    ({ pageParam = 1 }: any) => fetchProductsPage(pageParam),
     {
       getNextPageParam: (lastPage: PaginatedProducts) =>
         lastPage.nextPage ?? undefined,
