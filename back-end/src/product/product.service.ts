@@ -31,17 +31,16 @@ export class ProductService {
 
 
   /** 📌 Récupérer un produit par ID */
-  async findOne(id: number) {
-    const product = await this.prisma.product.findUnique({
-      where: { id },
-    });
-
-    if (!product) {
-      throw new NotFoundException('Product not found');
-    }
-
-    return product;
+async findOne(id: number) {
+  if (!id || isNaN(id)) {
+    throw new BadRequestException("Invalid product ID");
   }
+
+  return this.prisma.product.findUnique({
+    where: { id },
+  });
+}
+
 
 /** 📌 Créer un produit */
 async create(data: CreateProductDto) {
