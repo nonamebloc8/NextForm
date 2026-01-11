@@ -7,6 +7,7 @@ import { useCart } from "@/app/context/CartContext";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { tokenManager } from "@/services/api.service";
+import Link from "next/link";
 
 const checkoutSchema = z.object({
   fullName: z.string().min(3, "Nom trop court"),
@@ -47,17 +48,17 @@ export default function CheckoutPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const IBAN = "FR76 1759 8000 0100 0185 4999 019";
-  const BIC = "LYDIFRP2XX";
+  const IBAN = "FR76 1621 8000 0140 1213 2942 782";
+  // const BIC = "LYDIFRP2XX";
 
   const copyIban = () => {
     navigator.clipboard.writeText(IBAN);
     toast.success("IBAN copié !");
   };
-  const copyBic = () => {
-    navigator.clipboard.writeText(BIC);
-    toast.success("BIC copié !");
-  };
+  // const copyBic = () => {
+  //   navigator.clipboard.writeText(BIC);
+  //   toast.success("BIC copié !");
+  // };
 
   const onSubmit = async (data: CheckoutForm) => {
     try {
@@ -128,12 +129,12 @@ export default function CheckoutPage() {
           instantané sur notre RIB et envoyer la capture via WhatsApp.
         </p>
 
-        <a
+        <Link
           href="/"
           className="mt-6 bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-purple-700"
         >
           Retour à l&apos;accueil
-        </a>
+        </Link>
       </section>
     );
   }
@@ -281,9 +282,12 @@ export default function CheckoutPage() {
                   Informations RIB
                 </h3>
 
-                <p><strong>Bénéficiaire :</strong> Mr khelfa marwan </p>
+
+
+
+                <p><strong>Bénéficiaire :</strong> MUYEMBA MWANZA </p>
                 <p><strong>IBAN :</strong> {IBAN}</p>
-                <p><strong>BIC :</strong> {BIC}</p>
+                {/* <p><strong>BIC :</strong> {BIC}</p> */}
 
                 <div className="flex flex-col pb-2 w-40">
                   <button
@@ -293,13 +297,13 @@ export default function CheckoutPage() {
                   >
                     📋 Copier l’IBAN
                   </button>
-                  <button
+                  {/* <button
                     type="button"
                     onClick={copyBic}
                     className="mt-2 bg-black text-white px-3 py-1 rounded-lg"
                   >
                     📋 Copier le BIC
-                  </button>
+                  </button> */}
                 </div>
 
                 <div className="mt-4">
